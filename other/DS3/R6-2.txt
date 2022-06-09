@@ -1,0 +1,14 @@
+3
+Pop
+Inject 1
+Pop
+Eject
+Push 2
+Push 3
+Eject
+Inject 4
+Inject 5
+Inject 6
+Push 7
+Pop
+End
