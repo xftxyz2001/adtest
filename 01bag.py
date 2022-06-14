@@ -8,10 +8,12 @@ def bag(wv, W):
                 n_maxv[1] = tv
                 x[:] = op[:]
             return
-        op[i] = 1
-        dfs(i+1, tw+wv[i][0], tv+wv[i][1], op)
-        op[i] = 0
-        dfs(i+1, tw, tv, op)
+        if tw + wv[i][0] <= W:
+            op[i] = 1
+            dfs(i+1, tw+wv[i][0], tv+wv[i][1], op)
+        if tw + sum([wv[_][0] for _ in range(i+1, n_maxv[0])]) >= W:
+            op[i] = 0
+            dfs(i+1, tw, tv, op)
     dfs(0, 0, 0, [-1]*n_maxv[0])
     return n_maxv[1], [_ for _ in range(n_maxv[0]) if x[_] == 1]
 
