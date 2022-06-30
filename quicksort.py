@@ -1,3 +1,5 @@
+import random
+
 def partition(a, s, t):  # 一次划分算法
     tmp = a[s]  # 用序列的第1个记录作为基准
     while s != t:  # 从序列两端交替向中间扫描，直至s=t为止
@@ -13,6 +15,8 @@ def partition(a, s, t):  # 一次划分算法
 
 def quicksort(a, s, t):  # 对a[s..t]元素序列进行递增排序
     if s < t:  # 序列内至少存在2个元素的情况
+        j = random.randint(s, t)  # 产生[s,t]的随机数j
+        a[j], a[s] = a[s], a[j]  # 将j和s位置的元素交换
         p = partition(a, s, t)
         quicksort(a, s, p - 1)  # 对左子序列递归排序
         quicksort(a, p + 1, t)  # 对右子序列递归排序
