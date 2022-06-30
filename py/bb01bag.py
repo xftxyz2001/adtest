@@ -1,4 +1,4 @@
-# from queue import PriorityQueue
+from queue import PriorityQueue
 class E():
     def __init__(self, i, w, v, no, x):
         self.i = i
@@ -33,15 +33,15 @@ def bb01bag(w, v, W):
                 maxv[0] = e.v
                 bestx[:] = e.x[:]
         else:
-            qu.append(e)
-    qu = []
+            qu.put(e)
+    qu = PriorityQueue()
     total = 1
     e = E(0, 0, 0, total, [])
     total += 1
     bound(e)
-    qu.append(e)
-    while qu:
-        e = qu.pop(0)
+    qu.put(e)
+    while not qu.empty():
+        e = qu.get()
         if e.w + w[e.i] <= W:
             e1 = E(e.i+1, e.w+w[e.i], e.v+v[e.i], total, e.x[:]+[1])
             total += 1
